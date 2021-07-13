@@ -1,6 +1,6 @@
 {
-  "name": "@cdq/logger",
-  "version": "0.0.1",
+  "name": "@codasquieves/logger",
+  "version": "0.0.4",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -49,6 +49,8 @@
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write \"**/*.ts\"",
     "test": "mocha --config .mocharc.yaml '**/*.spec.ts'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "pub": "npm publish --access public",
+    "prepublish": "npm run build"
   }
 }
