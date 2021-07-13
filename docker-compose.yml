@@ -1,0 +1,8 @@
+version: "3.6"
+
+services:
+  logger:
+    image: node:12.14.1-alpine
+    working_dir: "/project"
+    volumes:
+      - .:/project

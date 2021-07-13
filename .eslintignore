@@ -1,0 +1,7 @@
+/.nyc_output/
+/.vscode/
+/Coverage/
+/dist/
+/docs/
+/node_modules/
+/typings/
