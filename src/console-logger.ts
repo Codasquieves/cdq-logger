@@ -33,7 +33,7 @@ export class ConsoleLogger implements Logger {
       level: config.logLevel ?? LogLevel.error,
       messageKey: "message",
       name: config.appName,
-      timestamp: (): string => `,"date": ${new Date().toISOString()}`
+      timestamp: (): string => `,"date": "${new Date().toISOString()}"`
     });
   }
 
