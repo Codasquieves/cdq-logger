@@ -1,7 +1,9 @@
 import { LogLevel } from "./contracts/log-level";
 
-export interface LogConfig {
-  appName?: string;
-  logLevel?: LogLevel;
-  blackList?: string[];
+export abstract class LogConfig {
+  public appName?: string;
+
+  public logLevel?: LogLevel;
+
+  public blackList?: string[];
 }

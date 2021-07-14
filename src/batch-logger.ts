@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { v4 } from "uuid";
+import { inject, injectable } from "inversify";
 import { FilterLogger } from "./filter/filter-logger";
 import { LogConfig } from "./log-config";
 import { LogLevel } from "./contracts/log-level";
@@ -11,6 +12,7 @@ import { LogDispatcher } from "./dispatcher/log-dispatcher";
 import { BatchDispatcher } from "./dispatcher/batch-dispatcher";
 import { LogMessage } from "./contracts/log-message";
 
+@injectable()
 export class BatchLogger implements Logger {
   public readonly correlationId: string;
 
@@ -22,7 +24,7 @@ export class BatchLogger implements Logger {
 
   private readonly appName?: string;
 
-  public constructor(config: LogConfig = {}) {
+  public constructor(@inject(LogConfig) config: LogConfig) {
     this.correlationId = v4();
 
     this.filter = new FilterLogger(config.blackList);

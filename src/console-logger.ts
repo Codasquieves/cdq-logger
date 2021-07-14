@@ -5,11 +5,13 @@ import { isNullOrUndefined } from "util";
 import pino from "pino";
 import { v4 } from "uuid";
 import parseError from "parse-error";
+import { inject, injectable } from "inversify";
 import { LogConfig } from "./log-config";
 import { LogLevel } from "./contracts/log-level";
 import { Logger } from "./logger";
 import { FilterLogger } from "./filter/filter-logger";
 
+@injectable()
 export class ConsoleLogger implements Logger {
   public readonly correlationId: string;
 
@@ -17,7 +19,7 @@ export class ConsoleLogger implements Logger {
 
   private readonly filter: FilterLogger;
 
-  public constructor(config: LogConfig = {}) {
+  public constructor(@inject(LogConfig) config: LogConfig) {
     this.correlationId = v4();
 
     this.filter = new FilterLogger(config.blackList);

@@ -1,6 +1,6 @@
 {
   "name": "@codasquieves/logger",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "inversify": "^5.1.1",
     "json-stringify-safe": "^5.0.1",
     "parse-error": "^0.2.0",
     "pino": "^6.6.1",
