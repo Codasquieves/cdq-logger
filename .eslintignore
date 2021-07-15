@@ -5,3 +5,4 @@
 /docs/
 /node_modules/
 /typings/
+/test/pre-test.ts

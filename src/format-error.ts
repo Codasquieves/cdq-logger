@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { isNullOrUndefined } from "util";
-import { AxiosError } from "axios";
+import type { AxiosError } from "axios";
 import parseError from "parse-error";
-import { LogError } from "./contracts/log-error";
-import { FilterLogger } from "./filter/filter-logger";
+import type { LogError } from "./contracts/log-error";
+import type { FilterLogger } from "./filter/filter-logger";
 
 export class FormatError {
   private readonly filter: FilterLogger;

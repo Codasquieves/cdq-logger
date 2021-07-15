@@ -1,12 +1,13 @@
-import { LogError } from "./log-error";
-import { LogLevel } from "./log-level";
+import type { LogError } from "./log-error";
+import type { LogLevel } from "./log-level";
 
 export interface LogMessage {
   "log-level": LogLevel;
   date: string;
   correlationId: string;
   message: string;
-  name?: string;
+  application?: string;
   params?: object;
   error?: LogError;
+  execution?: string;
 }

@@ -1,39 +1,42 @@
-import { LogMessage } from "../contracts/log-message";
 import { LogItem, LogLevel } from "../contracts/log-level";
-import { DirectDispatcher } from "./direct-dispatcher";
-import { LogDispatcher } from "./log-dispatcher";
+import type { LogMessage } from "../contracts/log-message";
+import type { LogDispatcher } from "../contracts/log-dispatcher";
+import { ConsoleDispatcher } from "./console-dispatcher";
 
 export class BatchDispatcher implements LogDispatcher {
-  private readonly directDispatcher: LogDispatcher;
+  private readonly level: LogItem;
 
-  private readonly logItem: LogItem;
+  private readonly console: ConsoleDispatcher;
 
-  private messages: [LogLevel, LogMessage][];
+  private direct: boolean;
 
-  public constructor(minimunLevel?: LogLevel) {
-    this.directDispatcher = new DirectDispatcher();
+  private messages: LogMessage[];
 
-    this.logItem = new LogItem(minimunLevel ?? LogLevel.error);
-
+  public constructor(minimun?: LogLevel) {
+    this.level = new LogItem(minimun);
+    this.console = new ConsoleDispatcher(LogLevel.debug);
+    this.direct = false;
     this.messages = [];
   }
 
-  public handle(level: LogLevel, message: LogMessage): LogDispatcher {
-    this.messages.push([level, message]);
-
-    if (this.logItem.isLessThan(level)) {
-      this.printAll();
-      return this.directDispatcher;
+  public handle(message: LogMessage): void {
+    if (this.direct) {
+      this.console.handle(message);
+      return;
     }
 
-    return this;
+    this.messages.push(message);
+
+    if (this.level.isLessThan(message["log-level"])) {
+      this.direct = true;
+      this.printAll();
+      this.messages = [];
+    }
   }
 
   private printAll(): void {
-    for (const item of this.messages) {
-      const [level, message] = item;
-      this.directDispatcher.handle(level, message);
+    for (const message of this.messages) {
+      this.console.handle(message);
     }
-    this.messages = [];
   }
 }

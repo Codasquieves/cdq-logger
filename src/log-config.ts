@@ -1,4 +1,4 @@
-import { LogLevel } from "./contracts/log-level";
+import type { LogLevel } from "./contracts/log-level";
 
 export abstract class LogConfig {
   public appName?: string;
@@ -6,4 +6,10 @@ export abstract class LogConfig {
   public logLevel?: LogLevel;
 
   public blackList?: string[];
+
+  public batch: boolean;
+
+  public constructor() {
+    this.batch = false;
+  }
 }

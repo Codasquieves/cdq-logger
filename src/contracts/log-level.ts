@@ -8,7 +8,7 @@ export enum LogLevel {
   silent = "silent"
 }
 
-const score = {
+const score: Record<LogLevel, number> = {
   [LogLevel.trace]: 0,
   [LogLevel.debug]: 1,
   [LogLevel.info]: 2,
@@ -19,13 +19,10 @@ const score = {
 };
 
 export class LogItem {
-  public readonly name: LogLevel;
-
   public readonly score: number;
 
-  public constructor(level: LogLevel) {
-    this.name = level;
-    this.score = score[level];
+  public constructor(level?: LogLevel) {
+    this.score = score[level ?? LogLevel.error];
   }
 
   public isLessThan(level: LogLevel): boolean {

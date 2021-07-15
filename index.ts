@@ -2,7 +2,7 @@
 import { Logger } from "./src/logger";
 import { LogLevel } from "./src/contracts/log-level";
 import { LogConfig } from "./src/log-config";
-import { BatchLogger } from "./src/batch-logger";
-import { ConsoleLogger } from "./src/console-logger";
+import { BaseLogger } from "./src/base-logger";
+import { FilterLogger } from "./src/filter/filter-logger";
 
-export { Logger, ConsoleLogger, BatchLogger, LogLevel, LogConfig };
+export { Logger, BaseLogger, LogLevel, LogConfig, FilterLogger };

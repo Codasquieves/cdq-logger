@@ -5,6 +5,7 @@
     "@typescript-eslint",
     "sonarjs",
     "import",
+    "unicorn",
     "eslint-plugin-prettier"
   ],
   "extends": [
@@ -12,11 +13,10 @@
     "plugin:sonarjs/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/all",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2019,
@@ -24,6 +24,9 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/dot-notation": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
     "sort-keys": [
       "error",
       "asc",
@@ -33,24 +36,6 @@
         "minKeys": 2
       }
     ],
-    "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/prefer-readonly-parameter-types": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
-    "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/no-type-alias": "off",
-    // customs
-    "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/ban-types": "off",
-    // Import Plugin
-    "import/no-cycle": "off",
-    "import/no-unresolved": [
-      2,
-      {
-        "commonjs": true,
-        "amd": true
-      }
-    ],
-    "import/no-default-export": "error",
     "import/order": [
       "error",
       {
@@ -63,6 +48,28 @@
           "index"
         ]
       }
-    ]
+    ],
+    "unicorn/filename-case": "error",
+    "@typescript-eslint/no-extraneous-class": "off",
+    "@typescript-eslint/no-implicit-any-catch": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/no-magic-numbers": [
+      "error",
+      {
+        "ignore": [
+          0,
+          1
+        ]
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true,
+        "amd": true
+      }
+    ],
+    "import/no-default-export": "error",
+    "no-console": "error"
   }
 }
