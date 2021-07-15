@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { isNullOrUndefined } from "util";
 import callsites from "callsites";
 import { v4 } from "uuid";
 import { inject, injectable } from "inversify";
@@ -71,14 +72,14 @@ export class BaseLogger implements Logger {
   }
 
   private formatMessage(level: LogLevel, message: string, params?: object, ex?: Error): LogMessage {
-    const executor = callsites[EXECUTOR];
+    const executor = callsites()[EXECUTOR];
 
     return {
       application: this.config.appName,
       correlationId: this.correlationId,
       date: new Date().toISOString(),
       error: this.formatError.format(ex),
-      execution: `${executor.getTypeName()}.${executor.getMethodName()}`,
+      execution: isNullOrUndefined(executor) ? undefined : `${executor.getTypeName()}.${executor.getMethodName()}`,
       "log-level": level,
       message,
       params: this.filter.clear(params)
