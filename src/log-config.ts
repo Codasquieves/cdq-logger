@@ -7,9 +7,5 @@ export abstract class LogConfig {
 
   public blackList?: string[];
 
-  public batch: boolean;
-
-  public constructor() {
-    this.batch = false;
-  }
+  public batchLog?: boolean;
 }

@@ -37,7 +37,7 @@ export class BaseLogger implements Logger {
     this.formatError = new FormatError(this.filter);
 
     const minimunLog = config.logLevel;
-    this.dispatcher = config.batch ? new BatchDispatcher(minimunLog) : new ConsoleDispatcher(minimunLog);
+    this.dispatcher = (config.batchLog ?? false) ? new BatchDispatcher(minimunLog) : new ConsoleDispatcher(minimunLog);
   }
 
   public trace(message: string, params?: object): void {
