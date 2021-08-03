@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import stringify from "json-stringify-safe";
-import type { LogLevel} from "../contracts/log-level";
+import type { LogLevel } from "../contracts/log-level";
 import { LogItem } from "../contracts/log-level";
 import type { LogMessage } from "../contracts/log-message";
 import type { LogDispatcher } from "../contracts/log-dispatcher";

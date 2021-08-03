@@ -65,6 +65,10 @@ export class FilterLogger {
       return false;
     }
 
+    if (!value.startsWith("{") && !value.startsWith("[")) {
+      return false;
+    }
+
     try {
       JSON.parse(value);
       return true;

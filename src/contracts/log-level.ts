@@ -5,7 +5,7 @@ export enum LogLevel {
   warn = "warn",
   error = "error",
   fatal = "fatal",
-  silent = "silent"
+  silent = "silent",
 }
 
 const score: Record<LogLevel, number> = {
@@ -15,7 +15,7 @@ const score: Record<LogLevel, number> = {
   [LogLevel.warn]: 3,
   [LogLevel.error]: 4,
   [LogLevel.fatal]: 5,
-  [LogLevel.silent]: 100000
+  [LogLevel.silent]: 100000,
 };
 
 export class LogItem {

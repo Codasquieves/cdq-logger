@@ -1,5 +1,5 @@
 export interface LogError {
-  error: object;
+  info: object;
   request?: object;
   response?: object;
 }

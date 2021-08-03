@@ -24,7 +24,7 @@ describe("Unit: FilterLogger", () => {
       it("Should dont mask if property name out of blacklist", () => {
         // Given
         const params = {
-          name: name.findName()
+          name: name.findName(),
         };
 
         const filter = new FilterLogger();
@@ -40,11 +40,11 @@ describe("Unit: FilterLogger", () => {
         it("Should mask simple object to default blacklist value", () => {
           // Given
           const params = {
-            "x-api-key": datatype.uuid()
+            "x-api-key": datatype.uuid(),
           };
 
           const expected = {
-            "x-api-key": MASK
+            "x-api-key": MASK,
           };
 
           const filter = new FilterLogger();
@@ -76,17 +76,17 @@ describe("Unit: FilterLogger", () => {
           const params = {
             configs: {
               values: {
-                "x-api-key": datatype.uuid()
-              }
-            }
+                "x-api-key": datatype.uuid(),
+              },
+            },
           };
 
           const expected = {
             configs: {
               values: {
-                "x-api-key": MASK
-              }
-            }
+                "x-api-key": MASK,
+              },
+            },
           };
 
           const filter = new FilterLogger();
@@ -133,8 +133,8 @@ describe("Unit: FilterLogger", () => {
             // Given
             const params = {
               values: {
-                list: MASK
-              }
+                list: MASK,
+              },
             };
 
             const filter = new FilterLogger();
@@ -150,14 +150,14 @@ describe("Unit: FilterLogger", () => {
             // Given
             const params = {
               values: {
-                list: ["a", "b", "c"]
-              }
+                list: ["a", "b", "c"],
+              },
             };
 
             const expected = {
               values: {
-                list: MASK
-              }
+                list: MASK,
+              },
             };
 
             const filter = new FilterLogger(["list"]);
@@ -175,11 +175,11 @@ describe("Unit: FilterLogger", () => {
             // Given
             const params = [
               {
-                id: "11"
+                id: "11",
               },
               {
-                id: "10"
-              }
+                id: "10",
+              },
             ];
 
             const filter = new FilterLogger();
@@ -199,15 +199,15 @@ describe("Unit: FilterLogger", () => {
                   {
                     document: "234234234",
                     id: "10",
-                    token: "token"
+                    token: "token",
                   },
                   {
                     document: "0-94",
                     id: "11",
-                    token: "tokenasd"
-                  }
-                ]
-              }
+                    token: "tokenasd",
+                  },
+                ],
+              },
             };
 
             const expected = {
@@ -216,15 +216,15 @@ describe("Unit: FilterLogger", () => {
                   {
                     document: MASK,
                     id: MASK,
-                    token: MASK
+                    token: MASK,
                   },
                   {
                     document: MASK,
                     id: MASK,
-                    token: MASK
-                  }
-                ]
-              }
+                    token: MASK,
+                  },
+                ],
+              },
             };
 
             const filter = new FilterLogger(["document", "token", "id"]);
@@ -246,16 +246,16 @@ describe("Unit: FilterLogger", () => {
           addresses: [
             {
               code: datatype.uuid(),
-              zipCode: address.zipCode()
-            }
+              zipCode: address.zipCode(),
+            },
           ],
           code: datatype.uuid(),
           document: {
             number: datatype.number(),
-            type: 1
+            type: 1,
           },
           name: name.findName(),
-          token: datatype.uuid()
+          token: datatype.uuid(),
         };
 
         const expected = {
@@ -263,10 +263,10 @@ describe("Unit: FilterLogger", () => {
           code: MASK,
           document: {
             number: MASK,
-            type: 1
+            type: 1,
           },
           name: MASK,
-          token: MASK
+          token: MASK,
         };
 
         const filter = new FilterLogger(["addresses", "number", "code", "name"]);

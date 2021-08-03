@@ -19,7 +19,7 @@ export class FormatError {
     }
 
     const result: LogError = {
-      error: parseError(error)
+      info: parseError(error),
     };
 
     const axiosError: AxiosError = error as AxiosError;
@@ -31,13 +31,13 @@ export class FormatError {
         headers: axiosError.config.headers,
         method: axiosError.config.method,
         params: axiosError.config.params,
-        url: axiosError.config.url
+        url: axiosError.config.url,
       };
 
       result.response = {
         data: axiosError.response?.data,
         headers: axiosError.response?.headers,
-        status: axiosError.response?.status
+        status: axiosError.response?.status,
       };
     }
 
