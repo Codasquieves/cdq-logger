@@ -61,7 +61,7 @@ export class BaseLogger implements Logger {
     this.dispatcher.handle(formattedParams);
   }
 
-  public error(message: string, error: Error, params?: object): void {
+  public error(message: string, error?: Error, params?: object): void {
     const formattedParams = this.formatMessage(LogLevel.error, message, params, error);
     this.dispatcher.handle(formattedParams);
   }

@@ -9,7 +9,7 @@ export abstract class Logger {
 
   public abstract warn: (message: string, params?: object) => void;
 
-  public abstract error: (message: string, error: Error, params?: object) => void;
+  public abstract error: (message: string, error?: Error, params?: object) => void;
 
   public abstract fatal: (message: string, error?: Error, params?: object) => void;
 }
