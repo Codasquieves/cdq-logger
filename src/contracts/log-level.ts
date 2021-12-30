@@ -1,4 +1,5 @@
 export enum LogLevel {
+  metrics = "metrics",
   trace = "trace",
   debug = "debug",
   info = "info",
@@ -15,6 +16,7 @@ const score: Record<LogLevel, number> = {
   [LogLevel.warn]: 3,
   [LogLevel.error]: 4,
   [LogLevel.fatal]: 5,
+  [LogLevel.metrics]: 9999,
   [LogLevel.silent]: 100000,
 };
 
