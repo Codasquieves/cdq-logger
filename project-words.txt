@@ -1,0 +1,5 @@
+codasquieves
+callsites
+inversify
+sonarjs
+mocharc

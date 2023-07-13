@@ -12,8 +12,8 @@ export class BatchDispatcher implements LogDispatcher {
 
   private messages: LogMessage[];
 
-  public constructor(minimun?: LogLevel) {
-    this.level = new LogItem(minimun);
+  public constructor(minimum?: LogLevel) {
+    this.level = new LogItem(minimum);
     this.console = new ConsoleDispatcher(LogLevel.debug);
     this.direct = false;
     this.messages = [];

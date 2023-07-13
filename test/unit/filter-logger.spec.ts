@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { assert } from "chai";
-import { name, datatype, address } from "faker";
+import { faker } from "@faker-js/faker";
 import { FilterLogger } from "../../src/filter/filter-logger";
 
 const MASK = "**sensitive**";
@@ -21,10 +21,10 @@ describe("Unit: FilterLogger", () => {
         assert.deepEqual(result, undefined);
       });
 
-      it("Should dont mask if property name out of blacklist", () => {
+      it("Should not mask if property name out of blacklist", () => {
         // Given
         const params = {
-          name: name.findName(),
+          name: faker.person.fullName(),
         };
 
         const filter = new FilterLogger();
@@ -40,10 +40,12 @@ describe("Unit: FilterLogger", () => {
         it("Should mask simple object to default blacklist value", () => {
           // Given
           const params = {
-            "x-api-key": datatype.uuid(),
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            "x-api-key": faker.string.uuid(),
           };
 
           const expected = {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             "x-api-key": MASK,
           };
 
@@ -76,7 +78,8 @@ describe("Unit: FilterLogger", () => {
           const params = {
             configs: {
               values: {
-                "x-api-key": datatype.uuid(),
+                // eslint-disable-next-line @typescript-eslint/naming-convention
+                "x-api-key": faker.string.uuid(),
               },
             },
           };
@@ -84,6 +87,7 @@ describe("Unit: FilterLogger", () => {
           const expected = {
             configs: {
               values: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 "x-api-key": MASK,
               },
             },
@@ -204,7 +208,7 @@ describe("Unit: FilterLogger", () => {
                   {
                     document: "0-94",
                     id: "11",
-                    token: "tokenasd",
+                    token: "fake-token",
                   },
                 ],
               },
@@ -245,17 +249,17 @@ describe("Unit: FilterLogger", () => {
         const person = {
           addresses: [
             {
-              code: datatype.uuid(),
-              zipCode: address.zipCode(),
+              code: faker.string.uuid(),
+              zipCode: faker.location.zipCode(),
             },
           ],
-          code: datatype.uuid(),
+          code: faker.string.uuid(),
           document: {
-            number: datatype.number(),
+            number: faker.number.int(),
             type: 1,
           },
-          name: name.findName(),
-          token: datatype.uuid(),
+          name: faker.person.fullName(),
+          token: faker.string.uuid(),
         };
 
         const expected = {

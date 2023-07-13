@@ -1,0 +1,23 @@
+{
+  "name": "Dev Logger",
+  "dockerComposeFile": [
+    "./docker-compose.dev.yml"
+  ],
+  "service": "dev-logger",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "maty.vscode-mocha-sidebar",
+        "streetsidesoftware.code-spell-checker",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "shutdownAction": "stopCompose"
+}

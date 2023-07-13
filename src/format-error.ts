@@ -4,7 +4,7 @@ import { isNullOrUndefined } from "util";
 import type { AxiosError } from "axios";
 import parseError from "parse-error";
 import type { LogError } from "./contracts/log-error";
-import type { FilterLogger } from "./filter/filter-logger";
+import { FilterLogger } from "./filter/filter-logger";
 
 export class FormatError {
   private readonly filter: FilterLogger;
@@ -26,12 +26,12 @@ export class FormatError {
 
     if (axiosError.isAxiosError) {
       result.request = {
-        baseUrl: axiosError.config.baseURL,
-        data: axiosError.config.params,
-        headers: axiosError.config.headers,
-        method: axiosError.config.method,
-        params: axiosError.config.params,
-        url: axiosError.config.url,
+        baseUrl: axiosError.config?.baseURL,
+        data: axiosError.config?.params,
+        headers: axiosError.config?.headers,
+        method: axiosError.config?.method,
+        params: axiosError.config?.params,
+        url: axiosError.config?.url,
       };
 
       result.response = {

@@ -37,8 +37,8 @@ export class BaseLogger implements Logger {
     this.filter = new FilterLogger(config.blackList);
     this.formatError = new FormatError(this.filter);
 
-    const minimunLog = config.logLevel;
-    this.dispatcher = config.batchLog ?? false ? new BatchDispatcher(minimunLog) : new ConsoleDispatcher(minimunLog);
+    const minimumLog = config.logLevel;
+    this.dispatcher = config.batchLog ?? false ? new BatchDispatcher(minimumLog) : new ConsoleDispatcher(minimumLog);
   }
 
   public metrics(name: string, params?: object): void {
@@ -85,6 +85,7 @@ export class BaseLogger implements Logger {
       date: new Date().toISOString(),
       error: this.formatError.format(ex),
       execution: isNullOrUndefined(executor) ? undefined : `${executor.getTypeName()}.${executor.getMethodName()}`,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       "log-level": level,
       message,
       params: this.filter.clear(params),

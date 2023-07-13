@@ -1,13 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "sonarjs",
-    "import",
-    "unicorn",
-    "eslint-plugin-prettier"
-  ],
+  "plugins": ["@typescript-eslint", "sonarjs", "import", "unicorn", "eslint-plugin-prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:sonarjs/recommended",
@@ -39,14 +33,7 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ]
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
       }
     ],
     "unicorn/filename-case": "error",
@@ -56,10 +43,7 @@
     "@typescript-eslint/no-magic-numbers": [
       "error",
       {
-        "ignore": [
-          0,
-          1
-        ]
+        "ignore": [0, 1]
       }
     ],
     "import/no-unresolved": [

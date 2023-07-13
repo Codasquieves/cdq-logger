@@ -3,9 +3,7 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
-    "lib": [
-      "es2017"
-    ],
+    "lib": ["es2017"],
     "sourceMap": true,
     "newLine": "LF",
     "pretty": false,
@@ -28,21 +26,9 @@
     "declaration": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "types": [
-      "node",
-      "mocha"
-    ],
-    "typeRoots": [
-      "./typings"
-    ]
+    "types": ["node", "mocha"],
+    "typeRoots": ["node_modules/@types", "./typings"]
   },
-  "include": [
-    "src",
-    "test",
-    "index.ts",
-    "typings"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "test", "index.ts", "typings"],
+  "exclude": ["node_modules"]
 }

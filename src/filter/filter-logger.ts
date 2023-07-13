@@ -33,7 +33,7 @@ export class FilterLogger {
       return item;
     }
 
-    Object.keys(item).forEach((key: string): void => {
+    Object.keys(item as object).forEach((key: string): void => {
       item[key] = this.filterItem(key, item[key]);
     });
 
